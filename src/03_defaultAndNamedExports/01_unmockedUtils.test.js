@@ -1,16 +1,19 @@
-import defaultMethod, { method1, method2, method3 } from './utils.js'
+import defaultMethod, { p1, p2, p3 } from './utils.js'
 
 describe('default and named exports - unmocked file', () => {
-  it('returns the correct value for Method 1', () => {
-    expect(method1()).toBe('You have called Method 1')
+  it('returns the correct value for p1', async () => {
+    const resultP1 = await p1();
+    expect(resultP1).toBe("You have called p1");
   })
 
-  it('returns the correct value for Method 2', () => {
-    expect(method2()).toBe('You have called Method 2')
+  it('returns the correct value for p2', async () => {
+    const resultP2 = await p2();
+    expect(resultP2).toBe('You have called p2')
   })
 
-  it('returns the correct value for Method 3', () => {
-    expect(method3()).toBe('You have called Method 3')
+  it('returns the correct value for p3', async () => {
+    const resultP3 = await p3();
+    expect(resultP3).toBe("You have called p3");
   })
 
   it('returns the correct value for Default Method', () => {
