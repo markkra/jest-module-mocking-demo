@@ -20,7 +20,9 @@ describe('default and named exports - partially mocked file', () => {
     const resultP2 = await p2();
 
     // Assert
-    expect(resultP2).toBe("You have called p2");
+    expect(resultP2).toBe(
+      "You have called p2 and You have called p3 and not the mock. p2 has closed over p3 - the real one"
+    );
   })
 
   it('returns the correct value for p3', async () => {
