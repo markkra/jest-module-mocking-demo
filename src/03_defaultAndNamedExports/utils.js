@@ -1,8 +1,14 @@
-export const method1 = () => 'You have called Method 1'
+export const p1 = async () => {
+  return Promise.resolve('You have called p1')
+}
 
-export const method2 = () => 'You have called Method 2'
+export const p2 = async () => {
+  return Promise.resolve("You have called p2");
+};
 
-export const method3 = () => 'You have called Method 3'
+export const p3 = async () => {
+  return Promise.resolve("You have called p3");
+};
 
 const defaultMethod = () => 'You have called the Default Method'
 export default defaultMethod
