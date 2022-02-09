@@ -1,15 +1,15 @@
 export const p1 = async () => {
-  return Promise.resolve('You have called p1')
+  return Promise.resolve('p1Result')
 }
 
-export const p2 = async () => {
-  const resultFromP3 = await p3();
-  return Promise.resolve(`You have called p2 and ${resultFromP3}. p2 has closed over p3 - the real one`);
+export const p2 = async (p3dependency = p3) => {
+  const resultFromP3 = await p3dependency();
+  return Promise.resolve(`p2Result and ${resultFromP3}`);
 };
 
 export const p3 = async () => {
-  return Promise.resolve("You have called p3 and not the mock");
+  return Promise.resolve("p3Result");
 };
 
-const defaultMethod = () => 'You have called the Default Method'
+const defaultMethod = () => 'defaultMethodResult'
 export default defaultMethod

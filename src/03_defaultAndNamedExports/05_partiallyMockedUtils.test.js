@@ -3,7 +3,7 @@ import defaultMethod, { p1, p2, p3 } from './utils.js'
 jest.mock('./utils.js', () => ({
   __esModule: true,
   ...jest.requireActual('./utils.js'),
-    p3: jest.fn().mockResolvedValue('You have called a mocked method!'),
+    p3: jest.fn().mockResolvedValue('mockedP3Result'),
 }))
 
 describe('default and named exports - partially mocked file', () => {
@@ -12,16 +12,26 @@ describe('default and named exports - partially mocked file', () => {
     const resultP1 = await p1();
 
     // Assert
-    expect(resultP1).toBe("You have called p1");
+    expect(resultP1).toBe("p1Result");
   })
 
-  it('returns the correct value for p2', async () => {
+  it('returns the correct value for p2 with default p3', async () => {
     // Arrange/Act
     const resultP2 = await p2();
 
     // Assert
     expect(resultP2).toBe(
-      "You have called p2 and You have called p3 and not the mock. p2 has closed over p3 - the real one"
+      "p2Result and p3Result"
+    );
+  })
+
+  it('returns the correct value for p2 with mocked p3', async () => {
+    // Arrange/Act
+    const resultP2 = await p2(p3);
+
+    // Assert
+    expect(resultP2).toBe(
+      "p2Result and mockedP3Result"
     );
   })
 
@@ -31,7 +41,7 @@ describe('default and named exports - partially mocked file', () => {
 
     // Assert
     expect(p3).toHaveBeenCalledTimes(1);
-    expect(mockResultP3).toBe("You have called a mocked method!");
+    expect(mockResultP3).toBe("mockedP3Result");
   })
 
   it('returns the correct value for the Default Method', () => {
@@ -40,7 +50,7 @@ describe('default and named exports - partially mocked file', () => {
 
     // Assert
     expect(resultDefaultModuleMethod).toBe(
-      "You have called the Default Method"
+      "defaultMethodResult"
     );
   })
 })

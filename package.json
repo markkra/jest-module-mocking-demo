@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Demo app for exploring module mocking within the Jest test framework",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watch"
   },
   "keywords": [
     "jest",
