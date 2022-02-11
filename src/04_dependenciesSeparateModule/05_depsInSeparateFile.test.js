@@ -1,4 +1,4 @@
-import func from "./utils";
+import func from "./utilityWithDependencies";
 import { p1, p2, p3 } from "./deps";
 
 jest.mock("./deps");
